@@ -1,0 +1,9 @@
+D:\DESAROLLO\JPC\Jpc-Imagenes\Oca-Imagenes\Oca-Imagenes\bin\Debug\Oca-Imagenes.exe.config
+D:\DESAROLLO\JPC\Jpc-Imagenes\Oca-Imagenes\Oca-Imagenes\bin\Debug\Oca-Imagenes.exe
+D:\DESAROLLO\JPC\Jpc-Imagenes\Oca-Imagenes\Oca-Imagenes\bin\Debug\Oca-Imagenes.pdb
+D:\DESAROLLO\JPC\Jpc-Imagenes\Oca-Imagenes\Oca-Imagenes\obj\Debug\Oca_Imagenes.Form1.resources
+D:\DESAROLLO\JPC\Jpc-Imagenes\Oca-Imagenes\Oca-Imagenes\obj\Debug\Oca_Imagenes.Properties.Resources.resources
+D:\DESAROLLO\JPC\Jpc-Imagenes\Oca-Imagenes\Oca-Imagenes\obj\Debug\Oca-Imagenes.csproj.GenerateResource.cache
+D:\DESAROLLO\JPC\Jpc-Imagenes\Oca-Imagenes\Oca-Imagenes\obj\Debug\Oca-Imagenes.exe
+D:\DESAROLLO\JPC\Jpc-Imagenes\Oca-Imagenes\Oca-Imagenes\obj\Debug\Oca-Imagenes.pdb
+D:\DESAROLLO\JPC\Jpc-Imagenes\Oca-Imagenes\Oca-Imagenes\obj\Debug\Oca_Imagenes.Imagen_Seleccionada.resources
