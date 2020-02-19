@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.txt_r_entrada = new System.Windows.Forms.TextBox();
             this.txt_r_salida = new System.Windows.Forms.TextBox();
@@ -63,6 +63,7 @@
             this.hilo = new System.ComponentModel.BackgroundWorker();
             this.lbl_progreso = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.check90 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.tabla_imagenes)).BeginInit();
             this.panel_lateral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -155,8 +156,8 @@
             // 
             // cpeso
             // 
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.cpeso.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.cpeso.DefaultCellStyle = dataGridViewCellStyle2;
             this.cpeso.HeaderText = "Peso";
             this.cpeso.Name = "cpeso";
             this.cpeso.ReadOnly = true;
@@ -200,6 +201,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.check90);
             this.panel1.Controls.Add(this.check_tamanios);
             this.panel1.Controls.Add(this.panel_tamanios);
             this.panel1.Controls.Add(this.btn_limpiar);
@@ -302,7 +304,7 @@
             this.btn_limpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_limpiar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_limpiar.ForeColor = System.Drawing.Color.Black;
-            this.btn_limpiar.Location = new System.Drawing.Point(9, 238);
+            this.btn_limpiar.Location = new System.Drawing.Point(11, 325);
             this.btn_limpiar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn_limpiar.Name = "btn_limpiar";
             this.btn_limpiar.Size = new System.Drawing.Size(211, 30);
@@ -332,7 +334,7 @@
             this.btn_aplicar_cambios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_aplicar_cambios.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_aplicar_cambios.ForeColor = System.Drawing.Color.White;
-            this.btn_aplicar_cambios.Location = new System.Drawing.Point(9, 202);
+            this.btn_aplicar_cambios.Location = new System.Drawing.Point(11, 289);
             this.btn_aplicar_cambios.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn_aplicar_cambios.Name = "btn_aplicar_cambios";
             this.btn_aplicar_cambios.Size = new System.Drawing.Size(211, 30);
@@ -463,6 +465,16 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "Puedes dar doble click en la imagen si deseas visualizarla.";
             // 
+            // check90
+            // 
+            this.check90.AutoSize = true;
+            this.check90.Location = new System.Drawing.Point(12, 218);
+            this.check90.Name = "check90";
+            this.check90.Size = new System.Drawing.Size(82, 20);
+            this.check90.TabIndex = 15;
+            this.check90.Text = "Rotar 90°";
+            this.check90.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -535,6 +547,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cpeso;
         private System.Windows.Forms.DataGridViewTextBoxColumn cnombre;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox check90;
     }
 }
 

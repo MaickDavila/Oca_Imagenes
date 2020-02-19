@@ -239,7 +239,7 @@ namespace Oca_Imagenes
 
             return (Image)b;
         }
-
+        bool Se_Aplico = false;
         private void hilo_DoWork(object sender, DoWorkEventArgs e)
         {
             try
@@ -319,11 +319,13 @@ namespace Oca_Imagenes
                     }
                     hilo.ReportProgress(row.Index);
                 }
+                Se_Aplico = true;
                
             }
             catch (Exception ex)
             {
                 string es = ex.Message;
+                Se_Aplico = false;
             }
         }
          
@@ -336,9 +338,16 @@ namespace Oca_Imagenes
 
         private void hilo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            lbl_progreso.Text = "¡Completado!";
-            MessageBox.Show("Los cambios se aplicaron.", "¡Completado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Process.Start(Ruta_Salida);
+            if (Se_Aplico)
+            {
+                lbl_progreso.Text = "¡Completado!";
+                MessageBox.Show("Los cambios se aplicaron.", "¡Completado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Process.Start(Ruta_Salida);
+            }
+            else
+            {
+                MessageBox.Show("No se realizaron cambios", "¡Completado!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }        
 
         void ActivarHilo()
@@ -420,6 +429,7 @@ namespace Oca_Imagenes
 
                     EncoderParameter myEncoderParameter = new EncoderParameter(myEncoder, calidad);
                     myEncoderParameters.Param[0] = myEncoderParameter;
+                    if(check90.Checked) bmp1.RotateFlip(RotateFlipType.Rotate90FlipX);
                     bmp1.Save(r_salida, jpgEncoder, myEncoderParameters);
 
                     //myEncoderParameter = new EncoderParameter(myEncoder, 100L);
