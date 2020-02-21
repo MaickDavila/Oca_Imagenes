@@ -84,28 +84,45 @@ namespace Oca_Imagenes
 
                 DirectoryInfo carpeta = new DirectoryInfo(Ruta_Entrada);
                 int cont = 0;
+                float peso = 0;
+                string peso_string = "";
+                string dimensiones = "";
+                progreso.Maximum = carpeta.GetFiles().Length;
                 foreach (var item in carpeta.GetFiles())
-                {                    
-                    string extension = item.Extension.Trim().ToLower();
-                    if (extension == ".png" || extension == ".jpg")
+                {
+                    try
                     {
-                        string name = item.Name;
-                        Image img = Image.FromFile(Ruta_Entrada + "/" + name);
-                        string dimensiones = img.Width + "-" + img.Height;
-
-                        float peso = (item.Length / 1024f);
-                        string peso_string = peso + " kb";
-                        if (peso > 1024f) peso_string = peso + " mb";
-                        if (peso > 1024f)
+                        string extension = item.Extension.Trim().ToLower();
+                        if (extension == ".png" || extension == ".jpg")
                         {
-                            peso = (item.Length / 1024f) / 1024f;
-                            peso_string = peso + " mb";
+                            string name = item.Name;
+                            using (MemoryStream memory = new MemoryStream())
+                            {
+                                Image img = Image.FromFile(Ruta_Entrada + @"\" + name);
+                                dimensiones = img.Width + "-" + img.Height;
+                                img.Dispose();
+                            }
+
+                                peso = (item.Length / 1024f);
+                            peso_string = peso + " kb";
+                            if (peso > 1024f) peso_string = peso + " mb";
+                            if (peso > 1024f)
+                            {
+                                peso = (item.Length / 1024f) / 1024f;
+                                peso_string = peso + " mb";
+                            }
+                            full_ruta_name = Ruta_Entrada + @"\" + name;
+                            imagenes.Add(name);
+                            pesos.Add(peso_string);
+                            dim.Add(dimensiones);
+                            cont++;
+                            hilo.ReportProgress(cont);
                         }
-                        full_ruta_name = Ruta_Entrada + @"\" + name;
-                        imagenes.Add(name);
-                        pesos.Add(peso_string);
-                        dim.Add(dimensiones);
-                        cont++;
+                    }
+                    catch (Exception ex)
+                    {
+                        string s = full_ruta_name + "||||" + peso + "||||" + peso_string;
+                        string ES = ex.Message; 
                     }
                 }
                 Image image;
