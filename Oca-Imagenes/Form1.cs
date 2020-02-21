@@ -52,11 +52,12 @@ namespace Oca_Imagenes
             {
                 FolderBrowserDialog folder = new FolderBrowserDialog();
                 if (folder.ShowDialog() == DialogResult.OK)
-                {                    
+                {
                     Ruta_Entrada = "";
                     tabla_imagenes.Rows.Clear();
                     txt_r_entrada.Text = folder.SelectedPath;
-                    RecorrerFolderEntrada();
+                    Carga_Uno = true;
+                    hilo.RunWorkerAsync();
                 }
             }
             catch (Exception)
@@ -82,6 +83,7 @@ namespace Oca_Imagenes
                 List<string> dim = new List<string>();
 
                 DirectoryInfo carpeta = new DirectoryInfo(Ruta_Entrada);
+                int cont = 0;
                 foreach (var item in carpeta.GetFiles())
                 {                    
                     string extension = item.Extension.Trim().ToLower();
@@ -103,18 +105,20 @@ namespace Oca_Imagenes
                         imagenes.Add(name);
                         pesos.Add(peso_string);
                         dim.Add(dimensiones);
-                         
+                        cont++;
                     }
                 }
                 Image image;
                 Size size = new Size(100, 100);
 
-                int cont = 0;
+                progreso.Maximum = cont;
+                cont = 0;                
                 foreach (string item in imagenes)
                 {
                     image = Image.FromFile(Ruta_Entrada + $"/{item}");
                     tabla_imagenes.Rows.Add(ResizeImage(image, size), dim.ToArray()[cont], pesos.ToArray()[cont], item);
                     cont++;
+                    hilo.ReportProgress(cont);
                 }
             }
             catch (Exception ex)
@@ -240,86 +244,94 @@ namespace Oca_Imagenes
             return (Image)b;
         }
         bool Se_Aplico = false;
+        bool Carga_Uno = false;
         private void hilo_DoWork(object sender, DoWorkEventArgs e)
         {
             try
             {
-                
-                int ancho = 0, alto = 0;
-                int indice = 0;                
-                bool tiene_tamanios = (txt_ancho.Text.Trim().Length != 0 || txt_alto.Text.Trim().Length != 0) ? true : false;
-                Ruta_Salida = txt_r_salida.Text;
-                bool existe_salida = txt_r_salida.Text.Trim().Length > 0 ? true : false;
-                if (!existe_salida)
+
+                if (Carga_Uno)
                 {
-                    MessageBox.Show("¡Para aplicar los cambios, especifique una ruta de salida válida!", "Imagenes", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    return;
+                    RecorrerFolderEntrada();
                 }
-                if (!tiene_tamanios)
+                else
                 {
-                    if (check_tamanios.Checked)
+                    int ancho = 0, alto = 0;
+                    int indice = 0;
+                    bool tiene_tamanios = (txt_ancho.Text.Trim().Length != 0 || txt_alto.Text.Trim().Length != 0) ? true : false;
+                    Ruta_Salida = txt_r_salida.Text;
+                    bool existe_salida = txt_r_salida.Text.Trim().Length > 0 ? true : false;
+                    if (!existe_salida)
                     {
-                        if (MessageBox.Show("¡No se definieron los cambios en el tamaño!\n¿Desea mantener el tamaño original de las imagenes?", "Imagenes", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK)
-                        {
-                            return;
-                        }
+                        MessageBox.Show("¡Para aplicar los cambios, especifique una ruta de salida válida!", "Imagenes", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        return;
                     }
-                }
-                progreso.Maximum = tabla_imagenes.Rows.Count - 1;
-
-                if (tiene_tamanios)
-                {
-                    ancho = int.Parse(txt_ancho.Text);
-                    alto = int.Parse(txt_alto.Text);
-                }
-               
-               
-
-                foreach (DataGridViewRow row in tabla_imagenes.Rows)
-                {
-                    indice = row.Index;
-                    string nombre = tabla_imagenes.Rows[indice].Cells["cnombre"].Value.ToString();
-                    string tamanio_original = tabla_imagenes.Rows[indice].Cells["csize"].Value.ToString();
-                    string abrir = Ruta_Entrada + @"\" + nombre;
-                    Image image = Image.FromFile(abrir);
                     if (!tiene_tamanios)
                     {
-                        string[] campos = tamanio_original.Split('-');
-                        ancho = int.Parse(campos[0]);
-                        alto = int.Parse(campos[1]);
+                        if (check_tamanios.Checked)
+                        {
+                            if (MessageBox.Show("¡No se definieron los cambios en el tamaño!\n¿Desea mantener el tamaño original de las imagenes?", "Imagenes", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK)
+                            {
+                                return;
+                            }
+                        }
                     }
-                    if (check_dimesion.Checked)
+                    progreso.Maximum = tabla_imagenes.Rows.Count - 1;
+
+                    if (tiene_tamanios)
                     {
+                        ancho = int.Parse(txt_ancho.Text);
+                        alto = int.Parse(txt_alto.Text);
+                    }
+
+
+
+                    foreach (DataGridViewRow row in tabla_imagenes.Rows)
+                    {
+                        indice = row.Index;
+                        string nombre = tabla_imagenes.Rows[indice].Cells["cnombre"].Value.ToString();
+                        string tamanio_original = tabla_imagenes.Rows[indice].Cells["csize"].Value.ToString();
+                        string abrir = Ruta_Entrada + @"\" + nombre;
+                        Image image = Image.FromFile(abrir);
                         if (!tiene_tamanios)
                         {
-                            image = ImageExt.Resize(image, ancho, alto);
+                            string[] campos = tamanio_original.Split('-');
+                            ancho = int.Parse(campos[0]);
+                            alto = int.Parse(campos[1]);
+                        }
+                        if (check_dimesion.Checked)
+                        {
+                            if (!tiene_tamanios)
+                            {
+                                image = ImageExt.Resize(image, ancho, alto);
+                            }
+                            else
+                            {
+                                image = ImageExt.ResizeProportional(image, ancho, alto, true);
+                            }
+
                         }
                         else
                         {
-                            image = ImageExt.ResizeProportional(image, ancho, alto, true);
+                            image = ImageExt.Resize(image, ancho, alto);
                         }
 
-                    }
-                    else
-                    {
-                        image = ImageExt.Resize(image, ancho, alto);
-                    }
-                    
-                    abrir = Application.StartupPath + @"\Temp\" + nombre;
-                    
-                    using (MemoryStream stream = new MemoryStream())
-                    {
-                        if (File.Exists(abrir))
+                        abrir = Application.StartupPath + @"\Temp\" + nombre;
+
+                        using (MemoryStream stream = new MemoryStream())
                         {
+                            if (File.Exists(abrir))
+                            {
 
-                            File.Delete(abrir);
-                            
+                                File.Delete(abrir);
+
+                            }
+                            Comprimir_Guardar_Imagen(image, Ruta_Salida + @"\" + nombre);
                         }
-                        Comprimir_Guardar_Imagen(image, Ruta_Salida + @"\" + nombre);
+                        hilo.ReportProgress(row.Index);
                     }
-                    hilo.ReportProgress(row.Index);
+                    Se_Aplico = true;
                 }
-                Se_Aplico = true;
                
             }
             catch (Exception ex)
@@ -338,15 +350,24 @@ namespace Oca_Imagenes
 
         private void hilo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (Se_Aplico)
+            if (!Carga_Uno)
             {
-                lbl_progreso.Text = "¡Completado!";
-                MessageBox.Show("Los cambios se aplicaron.", "¡Completado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Process.Start(Ruta_Salida);
+                if (Se_Aplico)
+                {
+                    lbl_progreso.Text = "¡Completado!";
+                    MessageBox.Show("Los cambios se aplicaron.", "¡Completado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Process.Start(Ruta_Salida);
+                }
+                else
+                {
+                    MessageBox.Show("No se realizaron cambios", "¡Completado!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
-                MessageBox.Show("No se realizaron cambios", "¡Completado!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Carga_Uno = false;
+                Se_Aplico = false;
+                lbl_progreso.Text = "¡Completado!";
             }
         }        
 

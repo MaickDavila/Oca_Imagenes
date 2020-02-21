@@ -7,3 +7,4 @@ D:\DESAROLLO\JPC\Jpc-Imagenes\Oca-Imagenes\Oca-Imagenes\obj\Debug\Oca-Imagenes.c
 D:\DESAROLLO\JPC\Jpc-Imagenes\Oca-Imagenes\Oca-Imagenes\obj\Debug\Oca-Imagenes.exe
 D:\DESAROLLO\JPC\Jpc-Imagenes\Oca-Imagenes\Oca-Imagenes\obj\Debug\Oca-Imagenes.pdb
 D:\DESAROLLO\JPC\Jpc-Imagenes\Oca-Imagenes\Oca-Imagenes\obj\Debug\Oca_Imagenes.Imagen_Seleccionada.resources
+D:\DESAROLLO\JPC\Jpc-Imagenes\Oca-Imagenes\Oca-Imagenes\obj\Debug\Oca-Imagenes.csprojAssemblyReference.cache

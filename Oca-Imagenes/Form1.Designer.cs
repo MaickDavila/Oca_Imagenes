@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.txt_r_entrada = new System.Windows.Forms.TextBox();
             this.txt_r_salida = new System.Windows.Forms.TextBox();
@@ -41,36 +41,40 @@
             this.cnombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel_lateral = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btn_aplicar_cambios = new System.Windows.Forms.Button();
+            this.btn_limpiar = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.check_tamanios = new System.Windows.Forms.CheckBox();
+            this.check90 = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.track_bar_calidad = new System.Windows.Forms.TrackBar();
             this.panel_tamanios = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_ancho = new System.Windows.Forms.TextBox();
             this.check_dimesion = new System.Windows.Forms.CheckBox();
             this.txt_alto = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btn_limpiar = new System.Windows.Forms.Button();
             this.lbl_calidad = new System.Windows.Forms.Label();
-            this.btn_aplicar_cambios = new System.Windows.Forms.Button();
-            this.track_bar_calidad = new System.Windows.Forms.TrackBar();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.progreso = new System.Windows.Forms.ProgressBar();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tab1 = new System.Windows.Forms.TabPage();
             this.hilo = new System.ComponentModel.BackgroundWorker();
             this.lbl_progreso = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.check90 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.tabla_imagenes)).BeginInit();
             this.panel_lateral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.panel_tamanios.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.track_bar_calidad)).BeginInit();
             this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.track_bar_calidad)).BeginInit();
+            this.panel_tamanios.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tab1.SuspendLayout();
             this.SuspendLayout();
@@ -78,7 +82,7 @@
             // txt_r_entrada
             // 
             this.txt_r_entrada.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_r_entrada.Location = new System.Drawing.Point(12, 150);
+            this.txt_r_entrada.Location = new System.Drawing.Point(11, 149);
             this.txt_r_entrada.Name = "txt_r_entrada";
             this.txt_r_entrada.Size = new System.Drawing.Size(211, 27);
             this.txt_r_entrada.TabIndex = 0;
@@ -86,7 +90,7 @@
             // txt_r_salida
             // 
             this.txt_r_salida.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_r_salida.Location = new System.Drawing.Point(12, 225);
+            this.txt_r_salida.Location = new System.Drawing.Point(11, 224);
             this.txt_r_salida.Name = "txt_r_salida";
             this.txt_r_salida.Size = new System.Drawing.Size(211, 27);
             this.txt_r_salida.TabIndex = 1;
@@ -95,7 +99,7 @@
             // 
             this.btn_r_entrada.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btn_r_entrada.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_r_entrada.Location = new System.Drawing.Point(12, 113);
+            this.btn_r_entrada.Location = new System.Drawing.Point(11, 112);
             this.btn_r_entrada.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn_r_entrada.Name = "btn_r_entrada";
             this.btn_r_entrada.Size = new System.Drawing.Size(210, 31);
@@ -108,7 +112,7 @@
             // 
             this.btn_r_salida.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btn_r_salida.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_r_salida.Location = new System.Drawing.Point(12, 188);
+            this.btn_r_salida.Location = new System.Drawing.Point(11, 187);
             this.btn_r_salida.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn_r_salida.Name = "btn_r_salida";
             this.btn_r_salida.Size = new System.Drawing.Size(210, 31);
@@ -156,8 +160,8 @@
             // 
             // cpeso
             // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.cpeso.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.cpeso.DefaultCellStyle = dataGridViewCellStyle1;
             this.cpeso.HeaderText = "Peso";
             this.cpeso.Name = "cpeso";
             this.cpeso.ReadOnly = true;
@@ -174,59 +178,186 @@
             // 
             // panel_lateral
             // 
-            this.panel_lateral.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel_lateral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.panel_lateral.BackColor = System.Drawing.Color.White;
             this.panel_lateral.Controls.Add(this.pictureBox1);
-            this.panel_lateral.Location = new System.Drawing.Point(11, 11);
+            this.panel_lateral.Controls.Add(this.panel2);
+            this.panel_lateral.Controls.Add(this.panel1);
+            this.panel_lateral.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel_lateral.Location = new System.Drawing.Point(0, 0);
             this.panel_lateral.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel_lateral.Name = "panel_lateral";
-            this.panel_lateral.Size = new System.Drawing.Size(246, 147);
+            this.panel_lateral.Size = new System.Drawing.Size(257, 801);
             this.panel_lateral.TabIndex = 14;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackColor = System.Drawing.Color.Lime;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(16, 13);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(210, 127);
+            this.pictureBox1.Size = new System.Drawing.Size(257, 147);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.btn_r_entrada);
+            this.panel2.Controls.Add(this.btn_r_salida);
+            this.panel2.Controls.Add(this.txt_r_entrada);
+            this.panel2.Controls.Add(this.txt_r_salida);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel2.Location = new System.Drawing.Point(0, 169);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(257, 269);
+            this.panel2.TabIndex = 15;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(11, 65);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(227, 22);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Panel de Configuración";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(15, 87);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(54, 19);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Rutas:";
+            // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.check90);
-            this.panel1.Controls.Add(this.check_tamanios);
-            this.panel1.Controls.Add(this.panel_tamanios);
-            this.panel1.Controls.Add(this.btn_limpiar);
-            this.panel1.Controls.Add(this.lbl_calidad);
-            this.panel1.Controls.Add(this.btn_aplicar_cambios);
-            this.panel1.Controls.Add(this.track_bar_calidad);
-            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.panel4);
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.ForeColor = System.Drawing.Color.Black;
-            this.panel1.Location = new System.Drawing.Point(11, 426);
+            this.panel1.Location = new System.Drawing.Point(0, 438);
             this.panel1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(246, 363);
+            this.panel1.Size = new System.Drawing.Size(257, 363);
             this.panel1.TabIndex = 7;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.btn_aplicar_cambios);
+            this.panel4.Controls.Add(this.btn_limpiar);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(0, 290);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(257, 73);
+            this.panel4.TabIndex = 10;
+            // 
+            // btn_aplicar_cambios
+            // 
+            this.btn_aplicar_cambios.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_aplicar_cambios.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btn_aplicar_cambios.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.btn_aplicar_cambios.FlatAppearance.BorderSize = 2;
+            this.btn_aplicar_cambios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_aplicar_cambios.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_aplicar_cambios.ForeColor = System.Drawing.Color.White;
+            this.btn_aplicar_cambios.Location = new System.Drawing.Point(2, 3);
+            this.btn_aplicar_cambios.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btn_aplicar_cambios.Name = "btn_aplicar_cambios";
+            this.btn_aplicar_cambios.Size = new System.Drawing.Size(253, 30);
+            this.btn_aplicar_cambios.TabIndex = 10;
+            this.btn_aplicar_cambios.Text = "Aplicar Cambios";
+            this.btn_aplicar_cambios.UseVisualStyleBackColor = false;
+            this.btn_aplicar_cambios.Click += new System.EventHandler(this.btn_aplicar_cambios_Click);
+            // 
+            // btn_limpiar
+            // 
+            this.btn_limpiar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_limpiar.BackColor = System.Drawing.Color.Transparent;
+            this.btn_limpiar.FlatAppearance.BorderColor = System.Drawing.Color.Crimson;
+            this.btn_limpiar.FlatAppearance.BorderSize = 2;
+            this.btn_limpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_limpiar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_limpiar.ForeColor = System.Drawing.Color.Black;
+            this.btn_limpiar.Location = new System.Drawing.Point(2, 39);
+            this.btn_limpiar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btn_limpiar.Name = "btn_limpiar";
+            this.btn_limpiar.Size = new System.Drawing.Size(253, 30);
+            this.btn_limpiar.TabIndex = 13;
+            this.btn_limpiar.Text = "Limpiar Todo";
+            this.btn_limpiar.UseVisualStyleBackColor = false;
+            this.btn_limpiar.Click += new System.EventHandler(this.btn_limpiar_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.check_tamanios);
+            this.panel3.Controls.Add(this.check90);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.track_bar_calidad);
+            this.panel3.Controls.Add(this.panel_tamanios);
+            this.panel3.Controls.Add(this.lbl_calidad);
+            this.panel3.Location = new System.Drawing.Point(12, 37);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(219, 247);
+            this.panel3.TabIndex = 16;
             // 
             // check_tamanios
             // 
             this.check_tamanios.BackColor = System.Drawing.SystemColors.ControlLight;
             this.check_tamanios.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.check_tamanios.Location = new System.Drawing.Point(16, 12);
+            this.check_tamanios.Location = new System.Drawing.Point(16, 21);
             this.check_tamanios.Name = "check_tamanios";
             this.check_tamanios.Size = new System.Drawing.Size(200, 29);
             this.check_tamanios.TabIndex = 14;
             this.check_tamanios.Text = "Tamaños:";
             this.check_tamanios.UseVisualStyleBackColor = false;
             this.check_tamanios.CheckedChanged += new System.EventHandler(this.check_tamanios_CheckedChanged);
+            // 
+            // check90
+            // 
+            this.check90.AutoSize = true;
+            this.check90.Location = new System.Drawing.Point(12, 227);
+            this.check90.Name = "check90";
+            this.check90.Size = new System.Drawing.Size(82, 20);
+            this.check90.TabIndex = 15;
+            this.check90.Text = "Rotar 90°";
+            this.check90.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(6, 156);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(58, 18);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Calidad:";
+            // 
+            // track_bar_calidad
+            // 
+            this.track_bar_calidad.Location = new System.Drawing.Point(6, 176);
+            this.track_bar_calidad.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.track_bar_calidad.Maximum = 100;
+            this.track_bar_calidad.Name = "track_bar_calidad";
+            this.track_bar_calidad.Size = new System.Drawing.Size(220, 45);
+            this.track_bar_calidad.TabIndex = 6;
+            this.track_bar_calidad.Value = 50;
+            this.track_bar_calidad.Scroll += new System.EventHandler(this.track_bar_calidad_Scroll);
             // 
             // panel_tamanios
             // 
@@ -237,7 +368,7 @@
             this.panel_tamanios.Controls.Add(this.txt_alto);
             this.panel_tamanios.Controls.Add(this.label3);
             this.panel_tamanios.Enabled = false;
-            this.panel_tamanios.Location = new System.Drawing.Point(16, 47);
+            this.panel_tamanios.Location = new System.Drawing.Point(16, 56);
             this.panel_tamanios.Name = "panel_tamanios";
             this.panel_tamanios.Size = new System.Drawing.Size(200, 80);
             this.panel_tamanios.TabIndex = 10;
@@ -294,114 +425,16 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Alto:";
             // 
-            // btn_limpiar
-            // 
-            this.btn_limpiar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_limpiar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_limpiar.FlatAppearance.BorderColor = System.Drawing.Color.Crimson;
-            this.btn_limpiar.FlatAppearance.BorderSize = 2;
-            this.btn_limpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_limpiar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_limpiar.ForeColor = System.Drawing.Color.Black;
-            this.btn_limpiar.Location = new System.Drawing.Point(11, 325);
-            this.btn_limpiar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btn_limpiar.Name = "btn_limpiar";
-            this.btn_limpiar.Size = new System.Drawing.Size(211, 30);
-            this.btn_limpiar.TabIndex = 13;
-            this.btn_limpiar.Text = "Limpiar Todo";
-            this.btn_limpiar.UseVisualStyleBackColor = false;
-            this.btn_limpiar.Click += new System.EventHandler(this.btn_limpiar_Click);
-            // 
             // lbl_calidad
             // 
             this.lbl_calidad.AutoSize = true;
             this.lbl_calidad.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_calidad.Location = new System.Drawing.Point(61, 147);
+            this.lbl_calidad.Location = new System.Drawing.Point(61, 156);
             this.lbl_calidad.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_calidad.Name = "lbl_calidad";
             this.lbl_calidad.Size = new System.Drawing.Size(24, 18);
             this.lbl_calidad.TabIndex = 12;
             this.lbl_calidad.Text = "50";
-            // 
-            // btn_aplicar_cambios
-            // 
-            this.btn_aplicar_cambios.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_aplicar_cambios.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btn_aplicar_cambios.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
-            this.btn_aplicar_cambios.FlatAppearance.BorderSize = 2;
-            this.btn_aplicar_cambios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_aplicar_cambios.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_aplicar_cambios.ForeColor = System.Drawing.Color.White;
-            this.btn_aplicar_cambios.Location = new System.Drawing.Point(11, 289);
-            this.btn_aplicar_cambios.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btn_aplicar_cambios.Name = "btn_aplicar_cambios";
-            this.btn_aplicar_cambios.Size = new System.Drawing.Size(211, 30);
-            this.btn_aplicar_cambios.TabIndex = 10;
-            this.btn_aplicar_cambios.Text = "Aplicar Cambios";
-            this.btn_aplicar_cambios.UseVisualStyleBackColor = false;
-            this.btn_aplicar_cambios.Click += new System.EventHandler(this.btn_aplicar_cambios_Click);
-            // 
-            // track_bar_calidad
-            // 
-            this.track_bar_calidad.Location = new System.Drawing.Point(6, 167);
-            this.track_bar_calidad.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.track_bar_calidad.Maximum = 100;
-            this.track_bar_calidad.Name = "track_bar_calidad";
-            this.track_bar_calidad.Size = new System.Drawing.Size(220, 45);
-            this.track_bar_calidad.TabIndex = 6;
-            this.track_bar_calidad.Value = 50;
-            this.track_bar_calidad.Scroll += new System.EventHandler(this.track_bar_calidad_Scroll);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(6, 147);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 18);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Calidad:";
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.btn_r_entrada);
-            this.panel2.Controls.Add(this.btn_r_salida);
-            this.panel2.Controls.Add(this.txt_r_entrada);
-            this.panel2.Controls.Add(this.txt_r_salida);
-            this.panel2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(11, 163);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(246, 269);
-            this.panel2.TabIndex = 15;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(8, 19);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(227, 22);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Panel de Configuración";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(12, 80);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(54, 19);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "Rutas:";
             // 
             // progreso
             // 
@@ -465,16 +498,6 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "Puedes dar doble click en la imagen si deseas visualizarla.";
             // 
-            // check90
-            // 
-            this.check90.AutoSize = true;
-            this.check90.Location = new System.Drawing.Point(12, 218);
-            this.check90.Name = "check90";
-            this.check90.Size = new System.Drawing.Size(82, 20);
-            this.check90.TabIndex = 15;
-            this.check90.Text = "Rotar 90°";
-            this.check90.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -485,8 +508,6 @@
             this.Controls.Add(this.lbl_progreso);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.progreso);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel_lateral);
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MinimumSize = new System.Drawing.Size(1220, 840);
@@ -498,13 +519,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.tabla_imagenes)).EndInit();
             this.panel_lateral.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel_tamanios.ResumeLayout(false);
-            this.panel_tamanios.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.track_bar_calidad)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.track_bar_calidad)).EndInit();
+            this.panel_tamanios.ResumeLayout(false);
+            this.panel_tamanios.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tab1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -548,6 +571,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cnombre;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox check90;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel3;
     }
 }
 
