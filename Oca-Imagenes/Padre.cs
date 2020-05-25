@@ -10,24 +10,29 @@ using System.Windows.Forms;
 
 namespace Oca_Imagenes
 {
-    public partial class Imagen_Seleccionada : Form
+    public partial class Padre : Form
     {
-        string Ruta, Nombre;
-        public Imagen_Seleccionada()
+        
+        public Padre()
         {
             InitializeComponent();
         }
-        public Imagen_Seleccionada(string ruta, string nombre)
+        
+
+        private void btnllamar_hijo_Click(object sender, EventArgs e)
         {
-            InitializeComponent();
-            Ruta = ruta;
-            Nombre = nombre;
+            Hijo hijo = new Hijo();
+            AddOwnedForm(hijo);
+            hijo.Show();
         }
 
         private void Imagen_Seleccionada_Load(object sender, EventArgs e)
         {
-            Image image = Image.FromFile(Ruta + "/" + Nombre);
-            imagen.Image = image;
+             
+        }
+        public void RecogerDatos_del_Hijo(string texto)
+        {
+            txt_texto.Text = texto;
         }
     }
 }
