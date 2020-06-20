@@ -276,9 +276,9 @@ namespace Oca_Imagenes
                 {
                     int ancho = 0, alto = 0;
                     int indice = 0;
-                    bool tiene_tamanios = (txt_ancho.Text.Trim().Length != 0 || txt_alto.Text.Trim().Length != 0) ? true : false;
+                    bool tiene_tamanios = (txt_ancho.Text.Trim().Length != 0 || txt_alto.Text.Trim().Length != 0);
                     Ruta_Salida = txt_r_salida.Text;
-                    bool existe_salida = txt_r_salida.Text.Trim().Length > 0 ? true : false;
+                    bool existe_salida = (txt_r_salida.Text.Trim().Length > 0);
                     if (!existe_salida)
                     {
                         MessageBox.Show("¡Para aplicar los cambios, especifique una ruta de salida válida!", "Imagenes", MessageBoxButtons.OK, MessageBoxIcon.Stop);
