@@ -60,5 +60,6 @@ namespace Oca_Imagenes
 
             return Resize(img, dstWidth, dstHeight);
         }
+         
     }
 }

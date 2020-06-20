@@ -9,3 +9,4 @@ D:\DESAROLLO\JPC\Jpc-Imagenes\Oca-Imagenes\Oca-Imagenes\obj\Debug\Oca-Imagenes.p
 D:\DESAROLLO\JPC\Jpc-Imagenes\Oca-Imagenes\Oca-Imagenes\obj\Debug\Oca-Imagenes.csprojAssemblyReference.cache
 D:\DESAROLLO\JPC\Jpc-Imagenes\Oca-Imagenes\Oca-Imagenes\obj\Debug\Oca_Imagenes.Hijo.resources
 D:\DESAROLLO\JPC\Jpc-Imagenes\Oca-Imagenes\Oca-Imagenes\obj\Debug\Oca_Imagenes.Padre.resources
+D:\DESAROLLO\JPC\Jpc-Imagenes\Oca-Imagenes\Oca-Imagenes\obj\Debug\Oca-Imagenes.csproj.CoreCompileInputs.cache

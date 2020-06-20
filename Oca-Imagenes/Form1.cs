@@ -222,6 +222,7 @@ namespace Oca_Imagenes
                 MessageBox.Show("¡No se encontró ninguna imagen!", "Imagen", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+        
 
         private static Image ResizeImage(Image imgToResize, Size size)
         {
@@ -478,6 +479,8 @@ namespace Oca_Imagenes
                     EncoderParameter myEncoderParameter = new EncoderParameter(myEncoder, calidad);
                     myEncoderParameters.Param[0] = myEncoderParameter;
                     if(check90.Checked) bmp1.RotateFlip(RotateFlipType.Rotate90FlipX);
+                    bmp1.SetResolution(300,300);
+                    bmp1.MakeTransparent(Color.White);                    
                     bmp1.Save(r_salida, jpgEncoder, myEncoderParameters);
 
                     //myEncoderParameter = new EncoderParameter(myEncoder, 100L);
