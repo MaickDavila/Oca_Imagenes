@@ -347,6 +347,8 @@ namespace Oca_Imagenes
                                     File.Delete(abrir);
 
                                 }
+                             
+
                                 Comprimir_Guardar_Imagen(image, Ruta_Salida + @"\" + nombre);
                             }
                             hilo.ReportProgress(row.Index);
@@ -483,14 +485,8 @@ namespace Oca_Imagenes
                     bmp1.MakeTransparent(Color.White);                    
                     bmp1.Save(r_salida, jpgEncoder, myEncoderParameters);
 
-                    //myEncoderParameter = new EncoderParameter(myEncoder, 100L);
-                    //myEncoderParameters.Param[0] = myEncoderParameter;
-                    //bmp1.Save(@"C:\TestPhotoQualityHundred.jpg", jpgEncoder, myEncoderParameters);
-
-                    //// Save the bitmap as a JPG file with zero quality level compression.  
-                    //myEncoderParameter = new EncoderParameter(myEncoder, 0L);
-                    //myEncoderParameters.Param[0] = myEncoderParameter;
-                    //bmp1.Save(@"C:\TestPhotoQualityZero.jpg", jpgEncoder, myEncoderParameters);
+                    ImageExt.RemoveBackground(r_salida);
+                 
                 }
             }
             catch (Exception ex)

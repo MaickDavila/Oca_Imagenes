@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -61,5 +63,35 @@ namespace Oca_Imagenes
             return Resize(img, dstWidth, dstHeight);
         }
          
+        public static void RemoveBackground(string ruta_image)
+        {
+            try
+            {
+
+                using (var client = new HttpClient())
+                using (var formData = new MultipartFormDataContent())
+                {
+                    formData.Headers.Add("X-Api-Key", "GHfMRwxK89JZw3tBt4KemgL9");
+                    formData.Add(new ByteArrayContent(File.ReadAllBytes(ruta_image)), "image_file", "file.jpg");
+                    formData.Add(new StringContent("auto"), "size");
+                    var response = client.PostAsync("https://api.remove.bg/v1.0/removebg", formData).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        FileStream fileStream = new FileStream(ruta_image, FileMode.Create, FileAccess.Write, FileShare.None);
+                        response.Content.CopyToAsync(fileStream).ContinueWith((copyTask) => { fileStream.Close(); });
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error: " + response.Content.ReadAsStringAsync().Result);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("error=>", e);
+                 
+            }
+        }
     }
 }
