@@ -17,6 +17,7 @@ namespace Oca_Imagenes
     public partial class Form1 : Form
     {
         string Ruta_Entrada, Ruta_Salida;
+        List<string> Keys = new List<string>();
         public Form1()
         {
             InitializeComponent();
@@ -44,6 +45,8 @@ namespace Oca_Imagenes
         {
             track_bar_calidad.Value = 50;
             ActivarHilo();
+            CrearKey();
+            LeerKey();
         }
 
         private void btn_r_entrada_Click(object sender, EventArgs e)
@@ -70,17 +73,17 @@ namespace Oca_Imagenes
 
             }
         }
-
-
+        List<string> imagenes = new List<string>();
+        List<string> pesos = new List<string>();
+        List<string> dim = new List<string>();
         void RecorrerFolderEntrada()
         {
             try
             {
                 string full_ruta_name = "";
                 Ruta_Entrada = txt_r_entrada.Text;
-                List<string> imagenes = new List<string>();
-                List<string> pesos = new List<string>();
-                List<string> dim = new List<string>();
+                
+               
 
                 DirectoryInfo carpeta = new DirectoryInfo(Ruta_Entrada);
                 int cont = 0;
@@ -132,7 +135,7 @@ namespace Oca_Imagenes
                 cont = 0;
                 foreach (string item in imagenes)
                 {
-                    image = Image.FromFile(Ruta_Entrada + $"/{item}");
+                    image = Image.FromFile(Ruta_Entrada + $"/{item}");                    
                     tabla_imagenes.Rows.Add(ResizeImage(image, size), dim.ToArray()[cont], pesos.ToArray()[cont], item);
                     cont++;
                     hilo.ReportProgress(cont);
@@ -183,7 +186,7 @@ namespace Oca_Imagenes
             catch (Exception ex)
             {
 
-                throw;
+               
             }
         }
 
@@ -301,16 +304,13 @@ namespace Oca_Imagenes
                         ancho = int.Parse(txt_ancho.Text);
                         alto = int.Parse(txt_alto.Text);
                     }
-
-
-
-                    foreach (DataGridViewRow row in tabla_imagenes.Rows)
+                    int cont = 0;
+                    foreach (string row in imagenes)
                     {
                         try
-                        {
-                            indice = row.Index;
-                            string nombre = tabla_imagenes.Rows[indice].Cells["cnombre"].Value.ToString();
-                            string tamanio_original = tabla_imagenes.Rows[indice].Cells["csize"].Value.ToString();
+                        {                             
+                            string nombre = row ;
+                            string tamanio_original = dim[cont];
                             string abrir = Ruta_Entrada + @"\" + nombre;
                             Image image = null;
                             image = Image.FromFile(abrir);
@@ -347,18 +347,73 @@ namespace Oca_Imagenes
                                     File.Delete(abrir);
 
                                 }
-                             
 
                                 Comprimir_Guardar_Imagen(image, Ruta_Salida + @"\" + nombre);
                             }
-                            hilo.ReportProgress(row.Index);
+                            hilo.ReportProgress(cont);
                             image.Dispose();
+                            cont++;
                         }
                         catch (Exception ex)
                         {
                             string es = ex.Message;
                         }
                     }
+                    
+                    //foreach (DataGridViewRow row in tabla_imagenes.Rows)
+                    //{
+                    //    try
+                    //    {
+                    //        indice = row.Index;
+                    //        string nombre = tabla_imagenes.Rows[indice].Cells["cnombre"].Value.ToString();
+                    //        string tamanio_original = tabla_imagenes.Rows[indice].Cells["csize"].Value.ToString();
+                    //        string abrir = Ruta_Entrada + @"\" + nombre;
+                    //        Image image = null;
+                    //        image = Image.FromFile(abrir);
+                    //        if (!tiene_tamanios)
+                    //        {
+                    //            string[] campos = tamanio_original.Split('-');
+                    //            ancho = int.Parse(campos[0]);
+                    //            alto = int.Parse(campos[1]);
+                    //        }
+                    //        if (check_dimesion.Checked)
+                    //        {
+                    //            if (!tiene_tamanios)
+                    //            {
+                    //                image = ImageExt.Resize(image, ancho, alto);
+                    //            }
+                    //            else
+                    //            {
+                    //                image = ImageExt.ResizeProportional(image, ancho, alto, true);
+                    //            }
+
+                    //        }
+                    //        else
+                    //        {
+                    //            image = ImageExt.Resize(image, ancho, alto);
+                    //        }
+
+                    //        abrir = Application.StartupPath + @"\Temp\" + nombre;
+
+                    //        using (MemoryStream stream = new MemoryStream())
+                    //        {
+                    //            if (File.Exists(abrir))
+                    //            {
+
+                    //                File.Delete(abrir);
+
+                    //            }
+
+                    //            Comprimir_Guardar_Imagen(image, Ruta_Salida + @"\" + nombre);
+                    //        }
+                    //        hilo.ReportProgress(row.Index);
+                    //        image.Dispose();
+                    //    }
+                    //    catch (Exception ex)
+                    //    {
+                    //        string es = ex.Message;
+                    //    }
+                    //}
                     Se_Aplico = true;
                 }
 
@@ -398,6 +453,7 @@ namespace Oca_Imagenes
                 Se_Aplico = false;
                 lbl_progreso.Text = "¡Completado!";
             }
+            contKetMessage = 0;
         }
 
         void ActivarHilo()
@@ -452,9 +508,20 @@ namespace Oca_Imagenes
                 panel_tamanios.Enabled = false;
             }
         }
+        private void list_keys_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtkey.Text = list_keys.Text.Trim();
+            btnguardarkey.Enabled = false;
+            btnquitar.Visible = true;
+        }
 
-       
-
+        private void btnquitar_Click(object sender, EventArgs e)
+        {
+            DeleteKey();
+            LeerKey();
+            txtkey.Text = "";
+        }
+        int contKetMessage = 0;
         private void Comprimir_Guardar_Imagen(Image image, string r_salida)
         {
             try
@@ -480,20 +547,139 @@ namespace Oca_Imagenes
 
                     EncoderParameter myEncoderParameter = new EncoderParameter(myEncoder, calidad);
                     myEncoderParameters.Param[0] = myEncoderParameter;
-                    if(check90.Checked) bmp1.RotateFlip(RotateFlipType.Rotate90FlipX);
-                    bmp1.SetResolution(300,300);
-                    bmp1.MakeTransparent(Color.White);                    
+                    if (check90.Checked) bmp1.RotateFlip(RotateFlipType.Rotate90FlipX);
+                    bmp1.SetResolution(300, 300);                     
                     bmp1.Save(r_salida, jpgEncoder, myEncoderParameters);
+                    if (Keys.ToArray().Length > 0 && ImageExt.ConKey)
+                    {
+                        ImageExt.ListarErrores();
+                        ImageExt.getApiValid(Keys);
+                        ImageExt.RemoveBackground(r_salida, Keys);
+                    }
+                    else
+                    {
+                        contKetMessage++;
+                        if (contKetMessage == 1)
+                            MessageBox.Show("¡No tiene key de Remove Background!");
+                    }
 
-                    ImageExt.RemoveBackground(r_salida);
-                 
                 }
             }
             catch (Exception ex)
             {
                 string es = ex.Message;
-            }     
+            }
+        }
+        private void btnguardarkey_Click(object sender, EventArgs e)
+        {
+            if(txtkey.Text.Trim().Length <= 0)
+            {
+                MessageBox.Show("¡Agrege una clave válida!");
+                return;
+            }
+            AgregarKey();
+            LeerKey();
+            txtkey.Text = "";
+        }
+        private void btnclear_Click(object sender, EventArgs e)
+        {
+            txtkey.Text = "";
+            btnguardarkey.Enabled = true;
+            btnquitar.Visible = false;
         }
 
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+        void CrearKey()
+        {
+            try
+            {
+                StreamWriter escribir = File.AppendText("key.txt");                
+                escribir.Close();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        void LeerKey()
+        {
+            try
+            {
+                list_keys.Items.Clear();
+                Keys.Clear();
+                StreamReader leer = File.OpenText("key.txt");
+                string cadena = leer.ReadLine();
+                string key = "";
+                while (cadena != null)
+                {
+                    key = cadena;
+                    cadena = leer.ReadLine();
+                    Keys.Add(key);
+                    
+                }
+                
+                leer.Close();
+                list_keys.Items.AddRange(Keys.ToArray());
+            }
+            catch (Exception)
+            {
+                CrearKey();
+                throw;
+            }
+        }
+        void AgregarKey()
+        {
+            try
+            {
+                StreamWriter escribir = File.AppendText("key.txt");
+                escribir.WriteLine(txtkey.Text.Trim());
+                escribir.Close();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void btntamaniocarnet_Click(object sender, EventArgs e)
+        {
+            check90.Checked = true;
+            txt_ancho.Text = "288";
+            txt_alto.Text = "240";
+        }
+
+        void DeleteKey()
+        {
+            try
+            {
+                StreamWriter escribir = File.CreateText("keyTemp.txt");
+                StreamReader leer = File.OpenText("key.txt");
+
+                string cadena = leer.ReadLine();
+
+                while (cadena != null)
+                {
+                    if (cadena.Trim() != txtkey.Text.Trim())
+                        escribir.WriteLine(cadena);
+                    cadena = leer.ReadLine();
+                }
+                escribir.Close();
+                leer.Close();
+
+                File.Delete("key.txt");
+                File.Move("keyTemp.txt", "key.txt");
+                MessageBox.Show("¡Key actualizada correctamente!");
+            }
+            catch (Exception ex)
+            {
+                //
+                MessageBox.Show($"Error al cambiar la key ${ex}");
+            }
+        }
     }
 }
