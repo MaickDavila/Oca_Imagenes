@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.txt_r_entrada = new System.Windows.Forms.TextBox();
             this.txt_r_salida = new System.Windows.Forms.TextBox();
@@ -49,6 +49,7 @@
             this.btn_aplicar_cambios = new System.Windows.Forms.Button();
             this.btn_limpiar = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btntamaniocarnet = new System.Windows.Forms.Button();
             this.check_tamanios = new System.Windows.Forms.CheckBox();
             this.check90 = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -63,18 +64,17 @@
             this.progreso = new System.Windows.Forms.ProgressBar();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tab1 = new System.Windows.Forms.TabPage();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnclear = new System.Windows.Forms.Button();
+            this.btnquitar = new System.Windows.Forms.Button();
+            this.list_keys = new System.Windows.Forms.ListBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnguardarkey = new System.Windows.Forms.Button();
+            this.txtkey = new System.Windows.Forms.TextBox();
             this.hilo = new System.ComponentModel.BackgroundWorker();
             this.lbl_progreso = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.btnguardarkey = new System.Windows.Forms.Button();
-            this.txtkey = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.list_keys = new System.Windows.Forms.ListBox();
-            this.btnquitar = new System.Windows.Forms.Button();
-            this.btnclear = new System.Windows.Forms.Button();
-            this.btntamaniocarnet = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tabla_imagenes)).BeginInit();
             this.panel_lateral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -170,8 +170,8 @@
             // 
             // cpeso
             // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.cpeso.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.cpeso.DefaultCellStyle = dataGridViewCellStyle1;
             this.cpeso.HeaderText = "Peso";
             this.cpeso.Name = "cpeso";
             this.cpeso.ReadOnly = true;
@@ -326,6 +326,25 @@
             this.panel3.Size = new System.Drawing.Size(219, 247);
             this.panel3.TabIndex = 16;
             // 
+            // btntamaniocarnet
+            // 
+            this.btntamaniocarnet.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btntamaniocarnet.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btntamaniocarnet.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.btntamaniocarnet.FlatAppearance.BorderSize = 2;
+            this.btntamaniocarnet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btntamaniocarnet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btntamaniocarnet.ForeColor = System.Drawing.Color.White;
+            this.btntamaniocarnet.Location = new System.Drawing.Point(156, 18);
+            this.btntamaniocarnet.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btntamaniocarnet.Name = "btntamaniocarnet";
+            this.btntamaniocarnet.Size = new System.Drawing.Size(60, 32);
+            this.btntamaniocarnet.TabIndex = 14;
+            this.btntamaniocarnet.Text = "Carnét";
+            this.btntamaniocarnet.UseVisualStyleBackColor = false;
+            this.btntamaniocarnet.Click += new System.EventHandler(this.btntamaniocarnet_Click);
+            // 
             // check_tamanios
             // 
             this.check_tamanios.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -407,8 +426,6 @@
             // check_dimesion
             // 
             this.check_dimesion.AutoSize = true;
-            this.check_dimesion.Checked = true;
-            this.check_dimesion.CheckState = System.Windows.Forms.CheckState.Checked;
             this.check_dimesion.Location = new System.Drawing.Point(2, 52);
             this.check_dimesion.Name = "check_dimesion";
             this.check_dimesion.Size = new System.Drawing.Size(143, 20);
@@ -480,6 +497,102 @@
             this.tab1.Text = "Imagenes de Entrada";
             this.tab1.UseVisualStyleBackColor = true;
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.btnclear);
+            this.tabPage1.Controls.Add(this.btnquitar);
+            this.tabPage1.Controls.Add(this.list_keys);
+            this.tabPage1.Controls.Add(this.linkLabel1);
+            this.tabPage1.Controls.Add(this.label7);
+            this.tabPage1.Controls.Add(this.btnguardarkey);
+            this.tabPage1.Controls.Add(this.txtkey);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(922, 695);
+            this.tabPage1.TabIndex = 1;
+            this.tabPage1.Text = "Config";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnclear
+            // 
+            this.btnclear.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnclear.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnclear.Location = new System.Drawing.Point(230, 80);
+            this.btnclear.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnclear.Name = "btnclear";
+            this.btnclear.Size = new System.Drawing.Size(71, 31);
+            this.btnclear.TabIndex = 19;
+            this.btnclear.Text = "Limpiar";
+            this.btnclear.UseVisualStyleBackColor = true;
+            this.btnclear.Click += new System.EventHandler(this.btnclear_Click);
+            // 
+            // btnquitar
+            // 
+            this.btnquitar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnquitar.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnquitar.Location = new System.Drawing.Point(392, 35);
+            this.btnquitar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnquitar.Name = "btnquitar";
+            this.btnquitar.Size = new System.Drawing.Size(71, 31);
+            this.btnquitar.TabIndex = 18;
+            this.btnquitar.Text = "Quitar";
+            this.btnquitar.UseVisualStyleBackColor = true;
+            this.btnquitar.Visible = false;
+            this.btnquitar.Click += new System.EventHandler(this.btnquitar_Click);
+            // 
+            // list_keys
+            // 
+            this.list_keys.FormattingEnabled = true;
+            this.list_keys.ItemHeight = 16;
+            this.list_keys.Location = new System.Drawing.Point(16, 133);
+            this.list_keys.Name = "list_keys";
+            this.list_keys.Size = new System.Drawing.Size(895, 548);
+            this.list_keys.TabIndex = 17;
+            this.list_keys.SelectedIndexChanged += new System.EventHandler(this.list_keys_SelectedIndexChanged);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(236, 19);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(151, 16);
+            this.linkLabel1.TabIndex = 16;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "https://www.remove.bg/";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(12, 16);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(114, 19);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Ingrese la key:";
+            // 
+            // btnguardarkey
+            // 
+            this.btnguardarkey.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnguardarkey.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnguardarkey.Location = new System.Drawing.Point(16, 80);
+            this.btnguardarkey.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnguardarkey.Name = "btnguardarkey";
+            this.btnguardarkey.Size = new System.Drawing.Size(210, 31);
+            this.btnguardarkey.TabIndex = 6;
+            this.btnguardarkey.Text = "Guardar";
+            this.btnguardarkey.UseVisualStyleBackColor = true;
+            this.btnguardarkey.Click += new System.EventHandler(this.btnguardarkey_Click);
+            // 
+            // txtkey
+            // 
+            this.txtkey.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtkey.Location = new System.Drawing.Point(16, 38);
+            this.txtkey.Name = "txtkey";
+            this.txtkey.Size = new System.Drawing.Size(371, 27);
+            this.txtkey.TabIndex = 5;
+            // 
             // hilo
             // 
             this.hilo.DoWork += new System.ComponentModel.DoWorkEventHandler(this.hilo_DoWork);
@@ -509,121 +622,6 @@
             this.label1.Size = new System.Drawing.Size(314, 14);
             this.label1.TabIndex = 10;
             this.label1.Text = "Puedes dar doble click en la imagen si deseas visualizarla.";
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.btnclear);
-            this.tabPage1.Controls.Add(this.btnquitar);
-            this.tabPage1.Controls.Add(this.list_keys);
-            this.tabPage1.Controls.Add(this.linkLabel1);
-            this.tabPage1.Controls.Add(this.label7);
-            this.tabPage1.Controls.Add(this.btnguardarkey);
-            this.tabPage1.Controls.Add(this.txtkey);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(922, 695);
-            this.tabPage1.TabIndex = 1;
-            this.tabPage1.Text = "Config";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // btnguardarkey
-            // 
-            this.btnguardarkey.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnguardarkey.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnguardarkey.Location = new System.Drawing.Point(16, 80);
-            this.btnguardarkey.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnguardarkey.Name = "btnguardarkey";
-            this.btnguardarkey.Size = new System.Drawing.Size(210, 31);
-            this.btnguardarkey.TabIndex = 6;
-            this.btnguardarkey.Text = "Guardar";
-            this.btnguardarkey.UseVisualStyleBackColor = true;
-            this.btnguardarkey.Click += new System.EventHandler(this.btnguardarkey_Click);
-            // 
-            // txtkey
-            // 
-            this.txtkey.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtkey.Location = new System.Drawing.Point(16, 38);
-            this.txtkey.Name = "txtkey";
-            this.txtkey.Size = new System.Drawing.Size(371, 27);
-            this.txtkey.TabIndex = 5;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(12, 16);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(114, 19);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Ingrese la key:";
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(236, 19);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(151, 16);
-            this.linkLabel1.TabIndex = 16;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "https://www.remove.bg/";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // list_keys
-            // 
-            this.list_keys.FormattingEnabled = true;
-            this.list_keys.ItemHeight = 16;
-            this.list_keys.Location = new System.Drawing.Point(16, 133);
-            this.list_keys.Name = "list_keys";
-            this.list_keys.Size = new System.Drawing.Size(895, 548);
-            this.list_keys.TabIndex = 17;
-            this.list_keys.SelectedIndexChanged += new System.EventHandler(this.list_keys_SelectedIndexChanged);
-            // 
-            // btnquitar
-            // 
-            this.btnquitar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnquitar.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnquitar.Location = new System.Drawing.Point(392, 35);
-            this.btnquitar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnquitar.Name = "btnquitar";
-            this.btnquitar.Size = new System.Drawing.Size(71, 31);
-            this.btnquitar.TabIndex = 18;
-            this.btnquitar.Text = "Quitar";
-            this.btnquitar.UseVisualStyleBackColor = true;
-            this.btnquitar.Visible = false;
-            this.btnquitar.Click += new System.EventHandler(this.btnquitar_Click);
-            // 
-            // btnclear
-            // 
-            this.btnclear.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnclear.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnclear.Location = new System.Drawing.Point(230, 80);
-            this.btnclear.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnclear.Name = "btnclear";
-            this.btnclear.Size = new System.Drawing.Size(71, 31);
-            this.btnclear.TabIndex = 19;
-            this.btnclear.Text = "Limpiar";
-            this.btnclear.UseVisualStyleBackColor = true;
-            this.btnclear.Click += new System.EventHandler(this.btnclear_Click);
-            // 
-            // btntamaniocarnet
-            // 
-            this.btntamaniocarnet.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btntamaniocarnet.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btntamaniocarnet.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
-            this.btntamaniocarnet.FlatAppearance.BorderSize = 2;
-            this.btntamaniocarnet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btntamaniocarnet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btntamaniocarnet.ForeColor = System.Drawing.Color.White;
-            this.btntamaniocarnet.Location = new System.Drawing.Point(156, 18);
-            this.btntamaniocarnet.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btntamaniocarnet.Name = "btntamaniocarnet";
-            this.btntamaniocarnet.Size = new System.Drawing.Size(60, 32);
-            this.btntamaniocarnet.TabIndex = 14;
-            this.btntamaniocarnet.Text = "Carnét";
-            this.btntamaniocarnet.UseVisualStyleBackColor = false;
-            this.btntamaniocarnet.Click += new System.EventHandler(this.btntamaniocarnet_Click);
             // 
             // Form1
             // 

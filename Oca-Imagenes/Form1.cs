@@ -216,6 +216,9 @@ namespace Oca_Imagenes
 
         private void btn_aplicar_cambios_Click(object sender, EventArgs e)
         {
+            hilo.RunWorkerAsync();
+            return;
+                
             if (tabla_imagenes.Rows.Count > 0)
             {
                 hilo.RunWorkerAsync();
@@ -277,26 +280,27 @@ namespace Oca_Imagenes
                 }
                 else
                 {
+                    RecorrerFolderEntrada();
                     int ancho = 0, alto = 0;
                     int indice = 0;
                     bool tiene_tamanios = (txt_ancho.Text.Trim().Length != 0 || txt_alto.Text.Trim().Length != 0);
-                    Ruta_Salida = txt_r_salida.Text;
-                    bool existe_salida = (txt_r_salida.Text.Trim().Length > 0);
-                    if (!existe_salida)
-                    {
-                        MessageBox.Show("¡Para aplicar los cambios, especifique una ruta de salida válida!", "Imagenes", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                        return;
-                    }
-                    if (!tiene_tamanios)
-                    {
-                        if (check_tamanios.Checked)
-                        {
-                            if (MessageBox.Show("¡No se definieron los cambios en el tamaño!\n¿Desea mantener el tamaño original de las imagenes?", "Imagenes", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK)
-                            {
-                                return;
-                            }
-                        }
-                    }
+                    //Ruta_Salida = txt_r_salida.Text;
+                    //bool existe_salida = (txt_r_salida.Text.Trim().Length > 0);
+                    //if (!existe_salida)
+                    //{
+                    //    MessageBox.Show("¡Para aplicar los cambios, especifique una ruta de salida válida!", "Imagenes", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    //    return;
+                    //}
+                    //if (!tiene_tamanios)
+                    //{
+                    //    if (check_tamanios.Checked)
+                    //    {
+                    //        if (MessageBox.Show("¡No se definieron los cambios en el tamaño!\n¿Desea mantener el tamaño original de las imagenes?", "Imagenes", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK)
+                    //        {
+                    //            return;
+                    //        }
+                    //    }
+                    //}
                     progreso.Maximum = tabla_imagenes.Rows.Count - 1;
 
                     if (tiene_tamanios)
@@ -305,6 +309,7 @@ namespace Oca_Imagenes
                         alto = int.Parse(txt_alto.Text);
                     }
                     int cont = 0;
+                    Ruta_Entrada = txt_r_entrada.Text.Trim();
                     foreach (string row in imagenes)
                     {
                         try
@@ -314,6 +319,11 @@ namespace Oca_Imagenes
                             string abrir = Ruta_Entrada + @"\" + nombre;
                             Image image = null;
                             image = Image.FromFile(abrir);
+                            Comprimir_Guardar_Imagen(image, nombre);
+                            hilo.ReportProgress(cont);
+                            image.Dispose();
+                            cont++;
+                            continue;
                             if (!tiene_tamanios)
                             {
                                 string[] campos = tamanio_original.Split('-');
@@ -348,7 +358,7 @@ namespace Oca_Imagenes
 
                                 }
 
-                                Comprimir_Guardar_Imagen(image, Ruta_Salida + @"\" + nombre);
+                                Comprimir_Guardar_Imagen(image, nombre);
                             }
                             hilo.ReportProgress(cont);
                             image.Dispose();
@@ -526,30 +536,56 @@ namespace Oca_Imagenes
         {
             try
             {
-                // Get a bitmap. The using statement ensures objects  
-                // are automatically disposed from memory after use.  
+
+                string carpeta_salida = Ruta_Entrada + "\\salida-final";
+                if (!File.Exists(carpeta_salida))
+                {
+                    Directory.CreateDirectory(carpeta_salida);
+                }
+                r_salida = carpeta_salida + "\\" + r_salida;
+
+                Ruta_Salida = carpeta_salida;
+
+
+                using (Bitmap bmp1 = new Bitmap(image))
+                {
+                    ImageCodecInfo jpgEncoder = GetEncoder(ImageFormat.Jpeg);
+
+                    System.Drawing.Imaging.Encoder myEncoder =
+                        System.Drawing.Imaging.Encoder.Quality;
+
+
+                    EncoderParameters myEncoderParameters = new EncoderParameters(1);
+
+                    EncoderParameter myEncoderParameter = new EncoderParameter(myEncoder, 100L);
+                    myEncoderParameters.Param[0] = myEncoderParameter;
+                    //if (check90.Checked) bmp1.RotateFlip(RotateFlipType.Rotate90FlipX);
+                    bmp1.SetResolution(302, 302);
+                    bmp1.Save(r_salida, jpgEncoder, myEncoderParameters);
+                    return;
+                }
+
+
+                    // Get a bitmap. The using statement ensures objects  
+                    // are automatically disposed from memory after use.  
                 long calidad = 0;
                 calidad = long.Parse(track_bar_calidad.Value.ToString());
                 using (Bitmap bmp1 = new Bitmap(image))
                 {
                     ImageCodecInfo jpgEncoder = GetEncoder(ImageFormat.Jpeg);
-
-                    // Create an Encoder object based on the GUID  
-                    // for the Quality parameter category.  
+                
                     System.Drawing.Imaging.Encoder myEncoder =
                         System.Drawing.Imaging.Encoder.Quality;
 
-                    // Create an EncoderParameters object.  
-                    // An EncoderParameters object has an array of EncoderParameter  
-                    // objects. In this case, there is only one  
-                    // EncoderParameter object in the array.  
+                   
                     EncoderParameters myEncoderParameters = new EncoderParameters(1);
 
                     EncoderParameter myEncoderParameter = new EncoderParameter(myEncoder, calidad);
                     myEncoderParameters.Param[0] = myEncoderParameter;
                     if (check90.Checked) bmp1.RotateFlip(RotateFlipType.Rotate90FlipX);
-                    bmp1.SetResolution(300, 300);                     
+                    bmp1.SetResolution(310, 310);                     
                     bmp1.Save(r_salida, jpgEncoder, myEncoderParameters);
+                    return;
                     if (Keys.ToArray().Length > 0 && ImageExt.ConKey)
                     {
                         ImageExt.ListarErrores();
@@ -649,8 +685,9 @@ namespace Oca_Imagenes
         private void btntamaniocarnet_Click(object sender, EventArgs e)
         {
             check90.Checked = true;
-            txt_ancho.Text = "288";
-            txt_alto.Text = "240";
+            txt_ancho.Text = "240";
+            txt_alto.Text = "288";
+             
         }
 
         void DeleteKey()

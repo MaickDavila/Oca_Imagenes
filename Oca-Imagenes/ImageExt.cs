@@ -57,9 +57,10 @@ namespace Oca_Imagenes
                 using (var client = new HttpClient())
                 using (var formData = new MultipartFormDataContent())
                 {
-                    formData.Headers.Add("X-Api-Key", KeyValidString);
+                    formData.Headers.Add("X-Api-Key", KeyValidString);                    
                     formData.Add(new ByteArrayContent(File.ReadAllBytes(ruta_image)), "image_file", "file.jpg");
                     formData.Add(new StringContent("auto"), "size");
+                    
                     var response = client.PostAsync("https://api.remove.bg/v1.0/removebg", formData).Result;
 
                     if (response.IsSuccessStatusCode)
